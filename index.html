@@ -196,7 +196,7 @@
     background:var(--surface); border:1px solid var(--gold);
     padding:1.5rem; width:240px;
     box-shadow: 0 8px 40px rgba(0,0,0,0.15);
- 
+
   @keyframes fadeIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
   .declined-text { font-size:0.9rem; color:var(--muted); margin-bottom:1.2rem; line-height:1.6; }
   .declined-text em { color:var(--white); font-style:normal; }
@@ -271,6 +271,29 @@
 
 <div class="bg-grid"></div>
 <div class="glow"></div>
+
+<!-- CN TOWER BACKGROUND -->
+<div style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:-1;display:flex;justify-content:center;pointer-events:none;overflow:hidden;">
+  <svg viewBox="0 0 400 1100" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="height:100vh;width:auto;opacity:0.07;">
+    <!-- Antenna tip -->
+    <polygon points="198,0 202,0 203,110 197,110" fill="#8a6a1e"/>
+    <!-- Upper shaft widening -->
+    <polygon points="197,110 203,110 206,190 194,190" fill="#8a6a1e"/>
+    <!-- SkyPod (small observation ring) -->
+    <ellipse cx="200" cy="200" rx="22" ry="10" fill="#8a6a1e"/>
+    <polygon points="194,200 206,200 207,248 193,248" fill="#8a6a1e"/>
+    <!-- Main Observation Pod -->
+    <path d="M130,248 Q128,248 126,260 L126,335 Q128,348 200,350 Q272,348 274,335 L274,260 Q272,248 270,248 Z" fill="#8a6a1e"/>
+    <!-- Shaft below pod narrowing to base -->
+    <polygon points="188,350 212,350 222,580 178,580" fill="#8a6a1e"/>
+    <!-- Left buttress leg -->
+    <polygon points="178,580 188,580 150,1100 60,1100" fill="#8a6a1e"/>
+    <!-- Center leg -->
+    <polygon points="188,580 212,580 218,1100 182,1100" fill="#8a6a1e"/>
+    <!-- Right buttress leg -->
+    <polygon points="212,580 222,580 340,1100 250,1100" fill="#8a6a1e"/>
+  </svg>
+</div>
 
 <!-- NAV -->
 <nav>
@@ -732,7 +755,7 @@ ${name}`
   // ── COMMENTS ──
   let comments = JSON.parse(localStorage.getItem('parth_comments') || '[]');
   let isAdmin = false;
-  const ADMIN_PASSWORD = 'mK7#qP2!nX';
+  const ADMIN_PASSWORD = 'parth2025';
 
   function unlockAdmin() {
     const pass = document.getElementById('admin-pass').value;
