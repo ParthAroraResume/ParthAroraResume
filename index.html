@@ -1,1 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Parth Arora — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #141720;
+    --surface2: #1c2030;
+    --gold: #c9a84c;
+    --gold-light: #e8c96a;
+    --white: #f0efe8;
+    --muted: #7a7f94;
+    --red: #e63946;
+    --green: #2ec4b6;
+    --border: rgba(201,168,76,0.18);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(13,15,20,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--gold); letter-spacing: 0.05em; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── SECTIONS ── */
+  section { padding: 7rem 4rem; max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.8rem; display: block;
+  }
+
+  h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding-top: 8rem; position: relative; max-width: 100%;
+    padding-left: 4rem; padding-right: 4rem;
+  }
+  .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; }
+  .hero-grid { display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; }
+  .hero-eyebrow { font-size: 0.8rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+  .hero h1 { font-size: clamp(3.5rem, 8vw, 7rem); line-height: 1.0; margin-bottom: 1.5rem; }
+  .hero h1 em { color: var(--gold); font-style: italic; }
+  .hero-tagline { font-size: 1.15rem; color: var(--muted); max-width: 520px; margin-bottom: 2.5rem; }
+  .hero-cta { display: inline-block; padding: 0.9rem 2.2rem; background: var(--gold); color: var(--bg); font-weight: 600; text-decoration: none; letter-spacing: 0.06em; font-size: 0.9rem; transition: background 0.2s, transform 0.2s; }
+  .hero-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .avatar-box {
+    width: 220px; height: 280px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5rem;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .avatar-box::after {
+    content: '';
+    position: absolute; bottom: -8px; right: -8px;
+    width: 100%; height: 100%;
+    border: 1px solid var(--gold);
+    z-index: -1;
+  }
+  .hero-scroll { position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--muted); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; }
+  .scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollLine 2s ease-in-out infinite; }
+  @keyframes scrollLine { 0%,100%{opacity:0;transform:scaleY(0) translateY(-10px)} 50%{opacity:1;transform:scaleY(1) translateY(0)} }
+
+  /* ── DECORATIVE BG ── */
+  .bg-grid {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: -1; pointer-events: none;
+    background-image: linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .glow { position: fixed; top: -200px; left: -200px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%); pointer-events: none; z-index: -1; }
+
+  /* ── ABOUT ── */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .about-text h2 { font-size: 2.8rem; margin-bottom: 1.5rem; }
+  .about-text p { color: var(--muted); margin-bottom: 1rem; }
+  .about-text p span { color: var(--white); }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); padding: 1.5rem; }
+  .stat-card .num { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--gold); display: block; }
+  .stat-card .lbl { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; }
+
+  /* ── EXPERIENCE ── */
+  .exp-timeline { position: relative; padding-left: 2rem; }
+  .exp-timeline::before { content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background: linear-gradient(to bottom, var(--gold), transparent); }
+  .exp-item { position: relative; margin-bottom: 3rem; }
+  .exp-item::before { content:''; position:absolute; left:-2.4rem; top:0.4rem; width:10px; height:10px; border-radius:50%; background:var(--gold); border: 2px solid var(--bg); }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem; }
+  .exp-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+  .exp-company { color: var(--gold); font-size: 0.95rem; font-weight: 500; }
+  .exp-dates { font-size: 0.8rem; color: var(--muted); padding: 0.2rem 0.8rem; border: 1px solid var(--border); }
+  .exp-desc { color: var(--muted); font-size: 0.95rem; }
+  .exp-desc li { margin-bottom: 0.3rem; }
+  .section-heading { font-size: 2.5rem; margin-bottom: 3rem; }
+
+  /* ── EDUCATION ── */
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .edu-card {
+    background: var(--surface); border: 1px solid var(--border); padding: 2rem;
+    position: relative; overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .edu-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+  .edu-card::before { content:'🎓'; position:absolute; right:1.5rem; top:1.5rem; font-size:2rem; opacity:0.15; }
+  .edu-degree { font-family:'Playfair Display', serif; font-size:1.2rem; margin-bottom:0.4rem; }
+  .edu-school { color: var(--gold); font-size:0.9rem; margin-bottom:0.3rem; }
+  .edu-year { color: var(--muted); font-size:0.85rem; }
+
+  /* ── LOOKING FOR ── */
+  .looking-box {
+    background: var(--surface); border: 1px solid var(--border); padding: 3rem;
+    position: relative; overflow: hidden;
+  }
+  .looking-box::after { content:'"'; position:absolute; right:2rem; top:-1rem; font-size:12rem; font-family:'Playfair Display',serif; color:var(--gold); opacity:0.05; line-height:1; }
+  .looking-box h2 { font-size:2rem; margin-bottom:1.5rem; }
+  .role-tags { display:flex; flex-wrap:wrap; gap:0.8rem; margin-top:1.5rem; }
+  .role-tag { padding:0.5rem 1.2rem; border:1px solid var(--gold); color:var(--gold); font-size:0.85rem; letter-spacing:0.08em; }
+
+  /* ── COMMENTS ── */
+  .comment-form { background:var(--surface); border:1px solid var(--border); padding:2rem; margin-bottom:2rem; }
+  .comment-form h3 { font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:1.5rem; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem; }
+  .form-group { display:flex; flex-direction:column; gap:0.4rem; }
+  .form-group label { font-size:0.8rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--muted); }
+  .form-group input, .form-group textarea {
+    background:var(--bg); border:1px solid var(--border); color:var(--white);
+    padding:0.75rem 1rem; font-family:'DM Sans',sans-serif; font-size:0.95rem;
+    outline:none; transition:border-color 0.2s; resize:none;
+  }
+  .form-group input:focus, .form-group textarea:focus { border-color:var(--gold); }
+  .btn-submit { padding:0.8rem 2rem; background:var(--gold); color:var(--bg); border:none; cursor:pointer; font-family:'DM Sans',sans-serif; font-weight:600; font-size:0.9rem; letter-spacing:0.06em; transition:background 0.2s; }
+  .btn-submit:hover { background:var(--gold-light); }
+  .comments-list { display:flex; flex-direction:column; gap:1rem; }
+  .comment-card { background:var(--surface); border:1px solid var(--border); padding:1.5rem; }
+  .comment-author { font-weight:600; color:var(--gold); margin-bottom:0.3rem; }
+  .comment-text { color:var(--muted); font-size:0.95rem; }
+  .comment-date { font-size:0.75rem; color:var(--muted); margin-top:0.5rem; opacity:0.6; }
+  .no-comments { color:var(--muted); font-style:italic; text-align:center; padding:2rem; }
+
+  /* ── FOOTER ── */
+  footer { text-align:center; padding:3rem 4rem; border-top:1px solid var(--border); color:var(--muted); font-size:0.85rem; }
+  footer span { color:var(--gold); }
+
+  /* ── INTERVIEW BANNER ── */
+  #interview-banner {
+    position:fixed; bottom:0; left:0; right:0; z-index:1000;
+    background:var(--surface); border-top:2px solid var(--gold);
+    padding:1.5rem 2rem;
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;
+    animation: slideUp 0.6s 1.5s both ease-out;
+    box-shadow: 0 -8px 40px rgba(0,0,0,0.4);
+  }
+  @keyframes slideUp { from{transform:translateY(100%);opacity:0} to{transform:translateY(0);opacity:1} }
+  .banner-text { font-family:'Playfair Display',serif; font-size:1.1rem; }
+  .banner-text span { color:var(--gold); }
+  .banner-sub { font-size:0.85rem; color:var(--muted); }
+  .banner-btns { display:flex; gap:1rem; align-items:center; }
+  .btn-yes { padding:0.75rem 1.8rem; background:var(--gold); color:var(--bg); border:none; cursor:pointer; font-weight:700; font-size:0.95rem; letter-spacing:0.05em; transition:background 0.2s, transform 0.2s; }
+  .btn-yes:hover { background:var(--gold-light); transform:scale(1.03); }
+  .btn-no { padding:0.75rem 1.5rem; background:transparent; color:var(--muted); border:1px solid var(--border); cursor:pointer; font-size:0.9rem; transition:all 0.2s; }
+  .btn-no:hover { border-color:var(--muted); color:var(--white); }
+
+
+    position:static; margin: 2rem auto 0 auto; z-index:1000;
+    background:var(--surface); border:1px solid var(--gold);
+    padding:1.5rem; width:240px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+ 
+  @keyframes fadeIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  .declined-text { font-size:0.9rem; color:var(--muted); margin-bottom:1.2rem; line-height:1.6; }
+  .declined-text em { color:var(--white); font-style:normal; }
+  .arrow-container { display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem; }
+  .big-arrow {
+    font-size:3rem; color:var(--red);
+    animation: arrowBounce 0.7s ease-in-out infinite alternate;
+    display:inline-block; filter: drop-shadow(0 0 8px var(--red));
+  }
+  @keyframes arrowBounce { from{transform:translateX(0)} to{transform:translateX(8px)} }
+  .btn-reconsider {
+    padding:0.5rem 0.8rem; background:transparent; color:var(--muted);
+    border:1px dashed var(--border); cursor:pointer; font-size:0.75rem;
+    font-family:'DM Sans',sans-serif; transition:all 0.2s; width:100%;
+    white-space:normal; word-break:break-word; text-align:left;
+  }
+  .btn-reconsider:hover { color:var(--white); border-color:var(--muted); }
+
+  /* ── MODAL ── */
+  #modal-overlay {
+    display:none; position:fixed; inset:0; z-index:2000;
+    background:rgba(0,0,0,0.75); backdrop-filter:blur(4px);
+    align-items:center; justify-content:center;
+  }
+  #modal-overlay.open { display:flex; }
+  .modal {
+    background:var(--surface2); border:1px solid var(--gold);
+    padding:2.5rem; width:90%; max-width:520px;
+    position:relative; animation:fadeIn 0.3s ease;
+  }
+  .modal h2 { font-family:'Playfair Display',serif; font-size:1.8rem; margin-bottom:0.5rem; }
+  .modal-sub { color:var(--muted); font-size:0.9rem; margin-bottom:2rem; }
+  .modal .form-group { margin-bottom:1rem; }
+  .modal .form-group input {
+    background:var(--bg); border:1px solid var(--border); color:var(--white);
+    padding:0.75rem 1rem; font-family:'DM Sans',sans-serif; font-size:0.95rem;
+    width:100%; outline:none; transition:border-color 0.2s;
+  }
+  .modal .form-group input:focus { border-color:var(--gold); }
+  .modal .form-group label { font-size:0.78rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--muted); display:block; margin-bottom:0.4rem; }
+  .btn-close-modal { position:absolute; top:1rem; right:1.5rem; background:none; border:none; color:var(--muted); font-size:1.5rem; cursor:pointer; }
+  .btn-close-modal:hover { color:var(--white); }
+  .btn-lock { width:100%; padding:1rem; background:var(--gold); color:var(--bg); border:none; cursor:pointer; font-weight:700; font-size:1rem; letter-spacing:0.06em; margin-top:1rem; transition:background 0.2s; }
+  .btn-lock:hover { background:var(--gold-light); }
+  .success-msg { text-align:center; padding:2rem; display:none; }
+  .success-msg .emoji { font-size:3rem; display:block; margin-bottom:1rem; }
+  .success-msg h3 { font-family:'Playfair Display',serif; font-size:1.5rem; margin-bottom:0.5rem; }
+  .success-msg p { color:var(--muted); }
+
+  /* ── REVEAL ANIMATION ── */
+  .reveal { opacity:0; transform:translateY(30px); transition:opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:768px) {
+    nav { padding:1rem 1.5rem; }
+    .nav-links { display:none; }
+    section { padding:5rem 1.5rem; }
+    #hero { padding-left:1.5rem; padding-right:1.5rem; }
+    .hero-grid { grid-template-columns:1fr; }
+    .avatar-box { display:none; }
+    .about-grid { grid-template-columns:1fr; }
+    .edu-grid { grid-template-columns:1fr; }
+    .form-row { grid-template-columns:1fr; }
+    #interview-banner { flex-direction:column; align-items:flex-start; }
+    #declined-corner { max-width:90vw; right:1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="glow"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">PA</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#talents">Talents</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#looking">Open To</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#comments">Comments</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-inner">
+    <div class="hero-grid">
+      <div class="hero">
+        <p class="hero-eyebrow">Available for hire · Open to opportunities</p>
+        <h1>Parth<br/><em>Arora</em></h1>
+        <p class="hero-tagline">
+          Business mind with a builder's instincts.
+          I solve problems first and explain them second — usually because by then, they're already solved.
+        </p>
+        <a href="#about" class="hero-cta">Explore My Work ↓</a>
+      </div>
+      <div class="avatar-box">👨‍💻</div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal">
+    <span class="section-label">// 01 — About Me</span>
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>The Human Behind the Resume</h2>
+        <div style="display:inline-flex;align-items:center;gap:0.6rem;margin-bottom:1.2rem;padding:0.4rem 1rem;border:1px solid var(--gold);background:rgba(201,168,76,0.07);">
+          <span style="font-size:1.1rem;">🔧</span>
+          <span style="font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);font-weight:600;">ISTP — The Virtuoso</span>
+        </div>
+        <p>
+          Hi, I'm Parth — the person in the room who's already figured out how to fix the problem 
+          while everyone else is still making a slide deck about it.
+        </p>
+        <p>
+          <span>Bold, practical, and quietly brilliant.</span> I don't overthink. I observe, 
+          I analyze, I act. I thrive when given a real problem and the space to solve it my way — 
+          which, for the record, usually works. I'm not one for endless meetings or corporate theatre, 
+          but put me in front of a genuine challenge and I'm genuinely in my element.
+        </p>
+        <p>
+          I'm also deeply <span>independent and adaptable</span> — I can read a room, shift gears fast, 
+          and stay calm when things get complicated. I'm not the loudest person at the table, 
+          but I tend to be the one people turn to when the plan falls apart and someone needs 
+          to actually figure it out. No drama. Just results.
+        </p>
+        <p style="color:var(--gold);font-size:0.85rem;margin-top:0.5rem;">
+          🛠️ Crafted. Analytical. Refreshingly direct. Occasionally too honest, but never boring.
+        </p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card reveal">
+          <span class="num">600+</span>
+          <span class="lbl">Applications Screened</span>
+        </div>
+        <div class="stat-card reveal">
+          <span class="num">200+</span>
+          <span class="lbl">Customers Served Daily</span>
+        </div>
+        <div class="stat-card reveal">
+          <span class="num">15+</span>
+          <span class="lbl">Hires Contributed To</span>
+        </div>
+        <div class="stat-card reveal">
+          <span class="num">150</span>
+          <span class="lbl">Households Engaged Daily</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLUM TALENTS -->
+<section id="talents">
+  <span class="section-label">// 02 — Professional Talents</span>
+  <h2 class="section-heading reveal">What Makes Me Tick at Work</h2>
+  <p style="color:var(--muted);margin-bottom:3rem;max-width:600px;" class="reveal">
+    According to Plum's professional assessment, these are the three core talents that drive and energize me most — the ones I bring to every room I walk into.
+  </p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;">
+
+    <div class="edu-card reveal" style="border-top:3px solid var(--gold);">
+      <div style="font-size:2rem;margin-bottom:1rem;">🔄</div>
+      <div class="edu-degree" style="font-size:1.2rem;margin-bottom:0.8rem;">Adaptation</div>
+      <p style="font-size:0.9rem;color:var(--muted);line-height:1.8;">
+        I don't just cope with change — I thrive in it. When the plan falls apart (and it will), 
+        I'm the one recalibrating while others are still processing. Dynamic environments aren't 
+        a challenge for me; they're where I do my best work.
+      </p>
+    </div>
+
+    <div class="edu-card reveal" style="border-top:3px solid var(--gold);">
+      <div style="font-size:2rem;margin-bottom:1rem;">🗣️</div>
+      <div class="edu-degree" style="font-size:1.2rem;margin-bottom:0.8rem;">Communication</div>
+      <p style="font-size:0.9rem;color:var(--muted);line-height:1.8;">
+        Clear, direct, and actually listened to. I convey ideas persuasively across all kinds of 
+        audiences — whether that's a boardroom or a one-on-one. I listen as much as I speak, 
+        which is rarer than it sounds.
+      </p>
+    </div>
+
+    <div class="edu-card reveal" style="border-top:3px solid var(--gold);">
+      <div style="font-size:2rem;margin-bottom:1rem;">🤝</div>
+      <div class="edu-degree" style="font-size:1.2rem;margin-bottom:0.8rem;">Conflict Resolution</div>
+      <p style="font-size:0.9rem;color:var(--muted);line-height:1.8;">
+        I find the signal through the noise in any disagreement. I'm good at identifying what's 
+        actually going on beneath the surface, getting people talking, and steering things toward 
+        outcomes everyone can live with. Less drama, more done.
+      </p>
+    </div>
+
+  </div>
+
+  <div style="margin-top:2.5rem;padding:1.5rem;background:var(--surface);border:1px solid var(--border);max-width:680px;" class="reveal">
+    <p style="font-size:0.9rem;color:var(--muted);line-height:1.8;">
+      <span style="color:var(--gold);font-weight:600;">A note on self-awareness:</span> I also recognize 
+      that maintaining composure when questioned or criticized is an area I'm actively working on. 
+      I'd rather be honest about that than pretend I'm a finished product. Growth is the whole point.
+    </p>
+  </div>
+
+  <p style="font-size:0.75rem;color:var(--muted);margin-top:1.5rem;opacity:0.6;" class="reveal">
+    Talent insights sourced from <a href="https://www.plum.io" target="_blank" style="color:var(--muted);text-decoration:underline;">Plum.io</a> professional assessment.
+  </p>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <span class="section-label">// 03 — Work Experience</span>
+  <h2 class="section-heading reveal">Where I've Made a Dent</h2>
+  <div class="exp-timeline">
+
+    <div class="exp-item reveal">
+      <div class="exp-header">
+        <div>
+          <div class="exp-title">Human Resources Intern</div>
+          <div class="exp-company">Gao Group Inc. · Toronto, Canada</div>
+        </div>
+        <div class="exp-dates">June 2023 — Sept 2023</div>
+      </div>
+      <ul class="exp-desc" style="padding-left:1.2rem;">
+        <li>Screened 600+ applications across multiple concurrent roles using ATS platforms — contributed to 5 direct hires and a broader team target of 15.</li>
+        <li>Identified a gap in assessment integrity and <em style="color:var(--white)">personally proposed and implemented a plagiarism detection process</em> across all candidate-written assessments. Classic ISTP move: spotted the problem, fixed it before anyone asked.</li>
+        <li>Coordinated end-to-end interview logistics — scheduling, written assessments, and panel interviews across several roles simultaneously.</li>
+        <li>Maintained confidential recruitment records in compliance with data privacy standards; prepared HR reports and hiring documentation for management.</li>
+        <li>Supported onboarding and drove HR process improvements that reduced administrative bottlenecks between HR and hiring managers.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-header">
+        <div>
+          <div class="exp-title">Canvasser & Client Representative</div>
+          <div class="exp-company">World Wide Acquisitions (UNICEF) · Toronto, Canada</div>
+        </div>
+        <div class="exp-dates">Feb 2023 — Apr 2023</div>
+      </div>
+      <ul class="exp-desc" style="padding-left:1.2rem;">
+        <li>Represented UNICEF in high-volume face-to-face outreach across GTA — engaging <em style="color:var(--white)">100–150 households per day</em>, addressing inquiries, and driving consistent supporter sign-ups.</li>
+        <li>Completed formal Child Safeguarding and Fraud Awareness training; maintained accurate engagement records in full regulatory compliance.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-header">
+        <div>
+          <div class="exp-title">Customer Service Associate</div>
+          <div class="exp-company">Your Independent Grocer · Vancouver, Canada</div>
+        </div>
+        <div class="exp-dates">May 2022 — July 2022</div>
+      </div>
+      <ul class="exp-desc" style="padding-left:1.2rem;">
+        <li>Delivered front-line service to ~200 customers daily in a high-volume retail environment — resolving inquiries and de-escalating concerns with professionalism during peak hours.</li>
+        <li>Collaborated with team members on inventory accuracy and transactional records, consistently meeting daily operational targets.</li>
+      </ul>
+    </div>
+
+
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <span class="section-label">// 04 — Education</span>
+  <h2 class="section-heading reveal">Where It All Began</h2>
+  <div class="edu-grid">
+    <div class="edu-card reveal">
+      <div class="edu-degree">Bachelor of Commerce — Business Management</div>
+      <div class="edu-school" style="margin-bottom:0.6rem;">Human Resources Major · Ted Rogers School of Management, Toronto Metropolitan University (Formerly Ryerson)</div>
+      <div class="edu-year">Sept 2021 — Dec 2025</div>
+      <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);">
+        <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:0.5rem;">Key Courses</div>
+        <div style="font-size:0.85rem;color:var(--muted);line-height:1.7;">Decision Making · Organizational Behaviour · Diversity & Inclusion · Recruitment & Selection · Compensation Management · Strategic HR · Industrial Relations · OHS · Negotiation & Conflict Resolution</div>
+      </div>
+      <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);">
+        <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:0.5rem;">Key Projects</div>
+        <div style="font-size:0.85rem;color:var(--muted);">Global Management Glo-Bus Simulation · HR Interpretive Simulation · SPSS Statistics Project</div>
+      </div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-degree">Power of Excel — Level 1, 2 & 3 + Excel Challenge</div>
+      <div class="edu-school" style="margin-bottom:0.6rem;">TRSM Bootcamp · Toronto Metropolitan University</div>
+
+      <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);">
+        <div style="font-size:0.85rem;color:var(--muted);line-height:1.7;">VLOOKUP · XLOOKUP · INDEX-MATCH · OFFSET · Pivot Tables · Advanced Formulas · Conditional Formatting · Data Validation · Dashboard Creation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOOKING FOR -->
+<section id="looking">
+  <span class="section-label">// 05 — What I'm Looking For</span>
+  <div class="looking-box reveal">
+    <h2>Fine. Jobs, Then.</h2>
+    <p style="color:var(--muted); max-width:600px;">
+      I'm selectively pursuing opportunities with top-tier organizations where my proven ability to drive 
+      measurable impact will actually be put to use — not buried under bureaucracy or assigned to a committee 
+      that meets bi-weekly to discuss the idea of maybe doing something.
+    </p>
+    <p style="color:var(--muted); margin-top:1rem; max-width:600px;">
+      I bring <em style="color:var(--white)">sharp analytical thinking, real-world HR experience, and the rare ability 
+      to both strategize and execute</em> — which means I don't just make plans, I see them through. 
+      If your organization is serious about results and not just optics, we'll get along just fine.
+    </p>
+    <div class="role-tags">
+      <div class="role-tag">Business Analysis</div>
+      <div class="role-tag">Operations Management</div>
+      <div class="role-tag">Project Management</div>
+      <div class="role-tag">Strategy & Consulting</div>
+      <div class="role-tag">Product Management</div>
+      <div class="role-tag">Hybrid / Remote</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <span class="section-label">// 06 — Skills & Tools</span>
+  <h2 class="section-heading reveal">What I Actually Know How To Do</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;">
+
+    <div class="edu-card reveal">
+      <div style="font-size:1.5rem;margin-bottom:0.8rem;">🧑‍💼</div>
+      <div class="edu-degree" style="margin-bottom:0.8rem;">HR & Recruitment</div>
+      <div style="font-size:0.85rem;color:var(--muted);line-height:1.8;">
+        Candidate screening & shortlisting · ATS & HRIS platforms · Plagiarism detection for assessments · Interview coordination · Employee records management · Onboarding support
+      </div>
+    </div>
+
+    <div class="edu-card reveal">
+      <div style="font-size:1.5rem;margin-bottom:0.8rem;">📊</div>
+      <div class="edu-degree" style="margin-bottom:0.8rem;">Administrative & Technical</div>
+      <div style="font-size:0.85rem;color:var(--muted);line-height:1.8;">
+        Microsoft Office Suite (Excel, Word, Outlook, PowerPoint) · Data entry & database management · Document preparation · Scheduling in fast-paced environments
+      </div>
+    </div>
+
+    <div class="edu-card reveal">
+      <div style="font-size:1.5rem;margin-bottom:0.8rem;">🤖</div>
+      <div class="edu-degree" style="margin-bottom:0.8rem;">AI Tools & Productivity</div>
+      <div style="font-size:0.85rem;color:var(--muted);line-height:1.8;">
+        Claude · ChatGPT · Gemini · Research & information synthesis · Structured problem-solving across academic and professional contexts
+      </div>
+    </div>
+
+    <div class="edu-card reveal">
+      <div style="font-size:1.5rem;margin-bottom:0.8rem;">⚡</div>
+      <div class="edu-degree" style="margin-bottom:0.8rem;">Professional Skills</div>
+      <div style="font-size:0.85rem;color:var(--muted);line-height:1.8;">
+        Confidential information handling · Attention to detail · Proactive problem-solving · Team collaboration · Time management under pressure
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMMENTS -->
+<section id="comments">
+  <span class="section-label">// 07 — Public Commentary</span>
+  <h2 class="section-heading reveal">What The Internet Thinks</h2>
+  <p style="color:var(--muted); margin-bottom:2rem;" class="reveal">
+    Comments are unverified but appreciated. Compliments encouraged. Constructive criticism tolerated.
+  </p>
+
+  <div class="comment-form reveal">
+    <h3>Leave Your Thoughts</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" id="comment-name" placeholder="e.g. Jane Smith"/>
+      </div>
+      <div class="form-group">
+        <label>Your Role (optional)</label>
+        <input type="text" id="comment-role" placeholder="e.g. Hiring Manager at Acme"/>
+      </div>
+    </div>
+    <div class="form-group" style="margin-bottom:1.2rem;">
+      <label>Your Comment</label>
+      <textarea id="comment-text" rows="4" placeholder="Share your thoughts about Parth's profile..."></textarea>
+    </div>
+    <button class="btn-submit" onclick="submitComment()">Post Comment →</button>
+  </div>
+
+  <div class="comments-list" id="comments-list">
+    <div class="no-comments" id="no-comments-msg">No comments yet. Be the first brave soul.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Crafted with care (and mild desperation) by <span>Parth Arora</span> · 2025</p>
+  <p style="margin-top:0.5rem; font-size:0.75rem;">Built to impress. Open to opportunities. Will not work for exposure.</p>
+  <p style="margin-top:1.5rem;font-size:0.72rem;color:var(--muted);opacity:0.6;line-height:1.8;">
+    Personality type (ISTP) sourced from <a href="https://www.16personalities.com" target="_blank" style="color:var(--muted);text-decoration:underline;">16personalities.com</a> &nbsp;·&nbsp;
+    Professional talent insights sourced from <a href="https://www.plum.io" target="_blank" style="color:var(--muted);text-decoration:underline;">Plum.io</a>
+  </p>
+</footer>
+
+<!-- INTERVIEW BANNER -->
+<div id="interview-banner">
+  <div>
+    <div class="banner-text">👋 Quick question — <span>would you call Parth Arora in for an interview?</span></div>
+    <div class="banner-sub">No commitment. Just a conversation. He cleans up nicely.</div>
+  </div>
+  <div class="banner-btns">
+    <button class="btn-yes" onclick="openModal()">Yes, absolutely! 🎯</button>
+    <button class="btn-no" onclick="declineInterview()">Not today</button>
+  </div>
+</div>
+
+<!-- PERMANENT RED ARROW CORNER -->
+<div id="declined-corner" style="display:block;">
+  <p class="declined-text">
+    We all make choices. 🤔<br/><br/>
+    Some people look at something <em>genuinely great</em> and still walk away —
+    and that's okay. Growth comes from recognizing those moments
+    and doing better next time.<br/><br/>
+    This... could be that moment. ⬇️
+  </p>
+  <div class="arrow-container" style="flex-direction:column;align-items:flex-start;gap:0.3rem;">
+    <button class="btn-reconsider" onclick="openModal()" style="margin-top:0.5rem;border-color:var(--red);color:var(--white);font-size:0.85rem;padding:0.7rem 1rem;">
+      Yeah okay, I'll call Parth for an interview
+    </button>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div id="modal-overlay">
+  <div class="modal">
+    <button class="btn-close-modal" onclick="closeModal()">✕</button>
+    <div id="modal-form-content">
+      <h2>Let's Make It Official 🎉</h2>
+      <p class="modal-sub">Great call. Parth will be ready. Please hydrate before the call.</p>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" id="interviewer-name" placeholder="Your full name"/>
+      </div>
+      <div class="form-group">
+        <label>Company</label>
+        <input type="text" id="interviewer-company" placeholder="Where you work"/>
+      </div>
+      <div class="form-group">
+        <label>Available Time for Interview</label>
+        <input type="text" id="interviewer-time" placeholder="e.g. Weekdays after 2pm EST"/>
+      </div>
+      <button class="btn-lock" onclick="submitInterview()">Lock It In 🔒</button>
+    </div>
+    <div class="success-msg" id="modal-success">
+      <span class="emoji">🎊</span>
+      <h3>You're all set!</h3>
+      <p>Parth has been notified. He's already ironing his shirt.<br/>Expect enthusiasm and possibly over-preparation.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── SCROLL REVEAL ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── BANNER ──
+  function declineInterview() {
+    document.getElementById('interview-banner').style.display = 'none';
+    document.getElementById('declined-corner').style.display = 'block';
+  }
+
+  // ── MODAL ──
+  function openModal() {
+    document.getElementById('interview-banner').style.display = 'none';
+    document.getElementById('modal-overlay').classList.add('open');
+    document.getElementById('modal-form-content').style.display = 'block';
+    document.getElementById('modal-success').style.display = 'none';
+  }
+
+  function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('open');
+  }
+
+  document.getElementById('modal-overlay').addEventListener('click', function(e) {
+    if(e.target === this) closeModal();
+  });
+
+  function submitInterview() {
+    const name = document.getElementById('interviewer-name').value.trim();
+    const company = document.getElementById('interviewer-company').value.trim();
+    const time = document.getElementById('interviewer-time').value.trim();
+    if(!name || !company) { alert("Please fill in your name and company — Parth needs to know who to impress!"); return; }
+
+    const subject = encodeURIComponent(`Interview Request from ${name} at ${company}`);
+    const body = encodeURIComponent(
+`Hi Parth,
+
+I came across your resume website and I'd love to bring you in for an interview!
+
+Here are my details:
+
+Name: ${name}
+Company: ${company}
+Availability: ${time || 'To be discussed'}
+
+Looking forward to connecting!
+
+${name}`
+    );
+
+    window.location.href = `mailto:aparth2002@gmail.com?subject=${subject}&body=${body}`;
+
+    document.getElementById('modal-form-content').style.display = 'none';
+    document.getElementById('modal-success').style.display = 'block';
+  }
+
+  // ── COMMENTS ──
+  let comments = JSON.parse(localStorage.getItem('parth_comments') || '[]');
+
+  function renderComments() {
+    const list = document.getElementById('comments-list');
+    const noMsg = document.getElementById('no-comments-msg');
+    if(comments.length === 0) { noMsg.style.display = 'block'; return; }
+    noMsg.style.display = 'none';
+    list.innerHTML = '';
+    comments.slice().reverse().forEach(c => {
+      const card = document.createElement('div');
+      card.className = 'comment-card';
+      card.innerHTML = `
+        <div class="comment-author">${escHtml(c.name)}${c.role ? ' · <span style="color:var(--muted);font-weight:400">' + escHtml(c.role) + '</span>' : ''}</div>
+        <div class="comment-text">${escHtml(c.text)}</div>
+        <div class="comment-date">${c.date}</div>
+      `;
+      list.appendChild(card);
+    });
+  }
+
+  function escHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function submitComment() {
+    const name = document.getElementById('comment-name').value.trim();
+    const role = document.getElementById('comment-role').value.trim();
+    const text = document.getElementById('comment-text').value.trim();
+    if(!name || !text) { alert("Please add your name and a comment!"); return; }
+    comments.push({ name, role, text, date: new Date().toLocaleDateString('en-US', {year:'numeric',month:'short',day:'numeric'}) });
+    localStorage.setItem('parth_comments', JSON.stringify(comments));
+    document.getElementById('comment-name').value = '';
+    document.getElementById('comment-role').value = '';
+    document.getElementById('comment-text').value = '';
+    renderComments();
+  }
+
+  renderComments();
+</script>
+</body>
+</html>
 
