@@ -95,11 +95,7 @@
   @keyframes scrollLine { 0%,100%{opacity:0;transform:scaleY(0) translateY(-10px)} 50%{opacity:1;transform:scaleY(1) translateY(0)} }
 
   /* ── DECORATIVE BG ── */
-  .bg-grid {
-    position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: -1; pointer-events: none;
-    background-image: linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
+  .bg-grid { display: none; }
   .glow { position: fixed; top: -200px; left: -200px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(138,106,30,0.05) 0%, transparent 70%); pointer-events: none; z-index: -1; }
 
   /* ── ABOUT ── */
@@ -192,11 +188,12 @@
   .btn-no { padding:0.75rem 1.5rem; background:transparent; color:var(--muted); border:1px solid var(--border); cursor:pointer; font-size:0.9rem; transition:all 0.2s; }
   .btn-no:hover { border-color:var(--muted); color:var(--white); }
 
+
     position:static; margin: 2rem auto 0 auto; z-index:1000;
     background:var(--surface); border:1px solid var(--gold);
     padding:1.5rem; width:240px;
     box-shadow: 0 8px 40px rgba(0,0,0,0.15);
-
+  
   @keyframes fadeIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
   .declined-text { font-size:0.9rem; color:var(--muted); margin-bottom:1.2rem; line-height:1.6; }
   .declined-text em { color:var(--white); font-style:normal; }
